@@ -1,54 +1,71 @@
-/* * API MODULE
- * Se encarga de conectar con GitHub para traer datos reales.
- * Documentación: https://docs.github.com/es/rest
+/**
+ * GITHUB API MODULE
+ * Este módulo consume la API oficial de GitHub para mostrar datos reales del perfil.
  */
 
-// TU USUARIO DE GITHUB (Cámbialo por el tuyo real cuando crees la cuenta)
-// Si no tienes, usa 'microsoft' o 'google' para probar que funcione.
-const GITHUB_USERNAME = 'google'; 
-
+// 1. Definimos tu usuario real
+const GITHUB_USERNAME = 'HarrisonORM'; 
 const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}`;
 
+/**
+ * Función para renderizar los datos en el DOM
+ * @param {Object} data - Objeto JSON retornado por la API
+ */
 const renderGitHubStats = (data) => {
     const container = document.getElementById('github-api-data');
     
-    // Inyectamos HTML dinámico con los datos recibidos
+    // Aquí inyectamos la info real de tu cuenta
     container.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: space-around;">
-            <div>
-                <p style="color: var(--first-color); font-weight: bold; font-size: 1.2rem;">${data.public_repos}</p>
-                <span style="font-size: 0.8rem">Repositorios</span>
+        <div class="api__wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div style="display: flex; gap: 2rem; justify-content: center; width: 100%;">
+                <div class="stat-item">
+                    <p style="color: var(--first-color); font-weight: bold; font-size: 1.5rem; margin: 0;">${data.public_repos}</p>
+                    <span style="font-size: 0.8rem; color: var(--text-color-light);">Repositorios</span>
+                </div>
+                <div class="stat-item">
+                    <p style="color: var(--first-color); font-weight: bold; font-size: 1.5rem; margin: 0;">${data.followers}</p>
+                    <span style="font-size: 0.8rem; color: var(--text-color-light);">Seguidores</span>
+                </div>
             </div>
-            <div>
-                <p style="color: var(--first-color); font-weight: bold; font-size: 1.2rem;">${data.followers}</p>
-                <span style="font-size: 0.8rem">Seguidores</span>
-            </div>
+            
+            <a href="${data.html_url}" target="_blank" class="button button--small" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                Ver mi perfil de GitHub <i class='bx bxl-github'></i>
+            </a>
         </div>
-        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-color-light);">
-            *Datos obtenidos en tiempo real de GitHub API
-        </p>
     `;
+
+    // Tip Senior: Si quieres que tu foto de perfil se cargue desde GitHub automáticamente:
+    const profileImg = document.querySelector('.about__img-placeholder img');
+    if (profileImg) {
+        profileImg.src = data.avatar_url;
+        profileImg.style.display = 'block'; // Aseguramos que se vea
+        // Ocultamos el icono de usuario si la imagen carga bien
+        const userIcon = document.querySelector('.about__img-placeholder i');
+        if (userIcon) userIcon.style.display = 'none';
+    }
 };
 
-// Función asíncrona profesional
+/**
+ * Lógica asíncrona principal
+ */
 async function getGithubData() {
     try {
         const response = await fetch(API_URL);
         
-        if (!response.ok) {
-            throw new Error('Error al conectar con GitHub');
-        }
+        if (!response.ok) throw new Error('Error al conectar con la API');
 
         const data = await response.json();
         renderGitHubStats(data);
 
     } catch (error) {
-        console.error('Error de API:', error);
+        console.error('Error en el fetch:', error);
         document.getElementById('github-api-data').innerHTML = `
-            <p style="color: #ff6b6b;">No se pudo cargar info de GitHub</p>
+            <p style="color: #ff6b6b; font-size: 0.8rem;">
+                No se pudo sincronizar con GitHub. Revisa tu conexión.
+            </p>
         `;
     }
 }
 
-// Inicializar
+// Ejecutamos la función al cargar el script
 getGithubData();
