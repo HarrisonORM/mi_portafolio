@@ -1,0 +1,79 @@
+/* Reseteo básico de navegador */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al dar clic en links */
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: .5s; /* Transición suave si cambias temas */
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Clases Utilitarias (Reutilizables) */
+.container {
+    max-width: 968px;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.section {
+    padding: 4.5rem 0 2rem;
+}
+
+.section__title {
+    font-size: var(--h2-font-size);
+    color: var(--first-color);
+    text-align: center;
+    margin-bottom: var(--mb-1);
+}
+
+.section__subtitle {
+    display: block;
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.text-accent {
+    color: var(--first-color);
+}
+
+/* Ajuste para pantallas grandes */
+@media screen and (min-width: 968px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

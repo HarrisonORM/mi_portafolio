@@ -1,0 +1,75 @@
+.header {
+    width: 100%;
+    position: fixed; /* Fijo arriba */
+    bottom: 0; /* En móbiles se usa abajo estilo app, en PC arriba */
+    left: 0;
+    z-index: 100;
+    background-color: var(--body-color);
+    box-shadow: 0 -1px 4px rgba(0,0,0,0.15);
+}
+
+/* Diseño Mobile First */
+.nav {
+    max-width: 968px;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.nav__menu {
+    width: 100%; /* Esto hace que ocupe el ancho disponible y quita la advertencia */
+}
+
+.nav__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+/* Media Query para PC (Barra arriba) */
+@media screen and (min-width: 768px) {
+    .header {
+        top: 0;
+        bottom: initial;
+        padding: 0 1rem;
+        box-shadow: none; /* Quitamos sombra en PC hasta hacer scroll */
+        backdrop-filter: blur(10px); /* Efecto vidrio */
+        background-color: rgba(20, 20, 20, 0.8);
+    }
+    
+    .nav {
+        height: 4.5rem; /* Más alto en PC */
+    }
+
+    .nav__list {
+        display: flex;
+        gap: 4rem;
+    }
+
+    .nav__link {
+        font-size: var(--normal-font-size);
+    }
+    
+    .nav__toggle {
+        display: none;
+    }
+}

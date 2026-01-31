@@ -1,0 +1,34 @@
+:root {
+    /* --- COLORES --- */
+    /* Hue: 150 es un verde moderno (tipo Matrix o Hacker moderno) */
+    --hue-color: 150; 
+
+    /* Color principal */
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    /* Color principal más oscuro (para hover) */
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    /* Color del texto de títulos (Blanco casi puro) */
+    --title-color: hsl(var(--hue-color), 8%, 95%);
+    /* Color de texto normal (Gris claro) */
+    --text-color: hsl(var(--hue-color), 8%, 75%);
+    /* Color del texto ligero */
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+    
+    /* --- FONDOS (Modo Oscuro Moderno) --- */
+    /* Fondo principal */
+    --body-color: hsl(var(--hue-color), 28%, 12%);
+    /* Fondo de tarjetas */
+    --container-color: hsl(var(--hue-color), 29%, 16%);
+
+    /* --- FUENTES --- */
+    --body-font: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.813rem;
+
+    /* --- MARGENES --- */
+    --mb-1: 0.5rem;
+    --mb-2: 1rem;
+}
