@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Desarrollador Web Junior</title>
-    
+
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <link rel="stylesheet" href="css/variables.css">
@@ -14,12 +15,13 @@
     <link rel="stylesheet" href="css/projects.css">
     <link rel="stylesheet" href="css/contact.css">
 </head>
+
 <body>
 
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="nav__logo"><span class="text-accent">Harrison Rengifo Marin</span></a>
-            
+
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#about" class="nav__link active-link"> Acerca de mí</a></li>
@@ -27,7 +29,7 @@
                     <li class="nav__item"><a href="#contact" class="nav__link"> Contáctame</a></li>
                 </ul>
             </div>
-            
+
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt'></i>
             </div>
@@ -35,23 +37,23 @@
     </header>
 
     <main class="main">
-        
+
         <section class="about section" id="about">
             <div class="about__container container grid">
                 <div class="about__data">
                     <h1 class="about__title">Hola, soy <span class="text-accent">Harrison Rengifo Marin</span></h1>
                     <h3 class="about__profession">Desarrollador Web Full Stack Junior</h3>
-                    
+
                     <p class="about__description">
-                        Egresado del CESDE con bases sólidas en lógica de programación. 
-                        Me especializo en crear experiencias web limpias y funcionales. 
+                        Egresado del CESDE con bases sólidas en lógica de programación.
+                        Me especializo en crear experiencias web limpias y funcionales.
                         Buscando mi primera oportunidad para aportar valor y código de calidad.
                     </p>
 
                     <div class="about__buttons">
                         <a href="#contact" class="button">Contáctame</a>
                         <a href="#projects" class="button button--ghost">Ver portafolio</a>
-                        <a href="#hojadevida" class="button button--ghost">Hoja de vida</a>
+                        <a href="docs/CV_Harrison_Rengifo_Marin.pdf" class="button button--ghost">Hoja de vida <i class='bx bx-download'></i></a>
 
                     </div>
 
@@ -74,35 +76,46 @@
             <span class="section__subtitle">Portafolio reciente</span>
 
             <div class="projects__container container grid">
-                
+
+                <article class="project__card">
+                    <div class="project__image-box" style="padding: 0;">
+                        <img src="img/Collage de imagenes del proyecto Sistema de Gestión & Roles.png"
+                            alt="Vista previa del Sistema de Gestión" class="project__img"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem .5rem 0 0;">
+                    </div>
+                    <div class="project__content">
+                        <h3 class="project__title">Sistema de Gestión & Roles</h3>
+                        <p class="project__description">Aplicación Full-Stack desarrollada con <strong>Python
+                                (Flask)</strong> y <strong>PostgreSQL</strong>.
+                            Cuenta con autenticación segura, encriptación de contraseñas y un sistema de
+                            Control de Acceso Basado en Roles (RBAC) para perfiles de Admin, Conductor y Bodega.</p>
+                        <a href="https://github.com/HarrisonORM/Validaci-n-de-datos.git"
+                            class="project__button">Repositorio <i class='bx bx-link-external'></i></a>
+                    </div>
+                </article>
+
                 <article class="project__card">
                     <div class="project__image-box">
                         <span class="project__status">En Desarrollo</span>
                         <i class='bx bx-code-block project__icon'></i>
                     </div>
                     <div class="project__content">
-                        <h3 class="project__title">Proyecto NNNN</h3>
+                        <h3 class="project__title">Proyecto en desarrollo</h3>
                         <p class="project__description">
-                            NNNN NNNN NNNN NNNN NNNN NNNN. Aquí describiré la tecnología usada (ej: HTML, CSS Grid) y el problema que soluciona.
+                            Próximamente agregaré más proyectos a mi portafolio. ¡Mantente atento!
                         </p>
-                        <a href="#" class="project__button">Demo <i class='bx bx-right-arrow-alt'></i></a>
+                        <a href="#" class="project__button"> <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </article>
 
-                <article class="project__card">
-                    <div class="project__image-box"><i class='bx bx-terminal project__icon'></i></div>
-                    <div class="project__content">
-                        <h3 class="project__title">Proyecto NNNN</h3>
-                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto y funcionalidades principales.</p>
-                        <a href="#" class="project__button">Demo <i class='bx bx-right-arrow-alt'></i></a>
-                    </div>
-                </article>
+                
 
-                <article class="project__card">
+                <!-- <article class="project__card">
                     <div class="project__image-box"><i class='bx bx-data project__icon'></i></div>
                     <div class="project__content">
                         <h3 class="project__title">Proyecto NNNN</h3>
-                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto y funcionalidades principales.</p>
+                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto
+                            y funcionalidades principales.</p>
                         <a href="#" class="project__button">Demo <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </article>
@@ -111,7 +124,8 @@
                     <div class="project__image-box"><i class='bx bx-laptop project__icon'></i></div>
                     <div class="project__content">
                         <h3 class="project__title">Proyecto NNNN</h3>
-                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto y funcionalidades principales.</p>
+                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto
+                            y funcionalidades principales.</p>
                         <a href="#" class="project__button">Demo <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
                 </article>
@@ -120,10 +134,11 @@
                     <div class="project__image-box"><i class='bx bx-mobile-alt project__icon'></i></div>
                     <div class="project__content">
                         <h3 class="project__title">Proyecto NNNN</h3>
-                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto y funcionalidades principales.</p>
+                        <p class="project__description">NNNN NNNN NNNN NNNN NNNN NNNN. Descripción técnica del proyecto
+                            y funcionalidades principales.</p>
                         <a href="#" class="project__button">Demo <i class='bx bx-right-arrow-alt'></i></a>
                     </div>
-                </article>
+                </article> -->
 
             </div>
         </section>
@@ -137,21 +152,24 @@
                     <div class="contact__card-icon"><i class='bx bxl-whatsapp'></i></div>
                     <h3 class="contact__card-title">WhatsApp</h3>
                     <span class="contact__card-data">Chat directo</span>
-                    <a href="https://wa.me/573135346325" target="_blank" class="contact__button">Escribirme <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href="https://wa.me/573135346325" target="_blank" class="contact__button">Escribirme <i
+                            class='bx bx-right-arrow-alt'></i></a>
                 </div>
 
                 <div class="contact__card">
                     <div class="contact__card-icon"><i class='bx bxl-telegram'></i></div>
                     <h3 class="contact__card-title">Telegram</h3>
                     <span class="contact__card-data">@harryson02</span>
-                    <a href="https://t.me/harryson02" target="_blank" class="contact__button">Escribirme <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href="https://t.me/harryson02" target="_blank" class="contact__button">Escribirme <i
+                            class='bx bx-right-arrow-alt'></i></a>
                 </div>
 
                 <div class="contact__card">
                     <div class="contact__card-icon"><i class='bx bxl-microsoft'></i></div>
                     <h3 class="contact__card-title">Outlook</h3>
                     <span class="contact__card-data">Harryson02@outlook.com</span>
-                    <a href="mailto:Harryson02@outlook.com" class="contact__button">Enviar correo <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href="mailto:Harryson02@outlook.com" class="contact__button">Enviar correo <i
+                            class='bx bx-right-arrow-alt'></i></a>
                 </div>
             </div>
         </section>
@@ -159,7 +177,7 @@
 
     <footer class="footer">
         <div class="footer__container container">
-            <h1 class="footer__title">DevJunior</h1>
+            <h1 class="footer__title">Harrison Olvany Rengifo Marin</h1>
             <ul class="footer__list">
                 <li><a href="#about" class="footer__link">Acerca de</a></li>
                 <li><a href="#projects" class="footer__link">Proyectos</a></li>
@@ -171,4 +189,5 @@
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

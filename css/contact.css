@@ -67,8 +67,10 @@
     margin-bottom: 1.5rem;
 }
 
-.footer__link:hover {
-    color: var(--first-color);
+.footer__link:visited {
+    
+    color: #999999;
+    
 }
 
 .footer__copy {
