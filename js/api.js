@@ -4,7 +4,7 @@
  */
 
 // 1. Definimos tu usuario real
-const GITHUB_USERNAME = 'HarrisonORM'; 
+const GITHUB_USERNAME = 'HarrisonORM';
 const API_URL = `https://api.github.com/users/${GITHUB_USERNAME}`;
 
 /**
@@ -34,12 +34,11 @@ const renderGitHubStats = (data) => {
         </div>
     `;
 
-    // Tip Senior: Si quieres que tu foto de perfil se cargue desde GitHub automáticamente:
+    // foto de perfil se cargue desde GitHub automáticamente:
     const profileImg = document.querySelector('.about__img-placeholder img');
     if (profileImg) {
         profileImg.src = data.avatar_url;
-        profileImg.style.display = 'block'; // Aseguramos que se vea
-        // Ocultamos el icono de usuario si la imagen carga bien
+        profileImg.style.display = 'block';
         const userIcon = document.querySelector('.about__img-placeholder i');
         if (userIcon) userIcon.style.display = 'none';
     }
@@ -67,5 +66,5 @@ async function getGithubData() {
     }
 }
 
-// Ejecutamos la función al cargar el script
+
 getGithubData();
