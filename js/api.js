@@ -1,7 +1,4 @@
-/**
- * GITHUB API MODULE
- * Este módulo consume la API oficial de GitHub para mostrar datos reales del perfil.
- */
+ //API oficial de GitHub para mostrar datos reales del perfil.
 
 // 1. Definimos tu usuario real
 const GITHUB_USERNAME = 'HarrisonORM';
@@ -44,9 +41,8 @@ const renderGitHubStats = (data) => {
     }
 };
 
-/**
- * Lógica asíncrona principal
- */
+//Lógica asíncrona principal
+
 async function getGithubData() {
     try {
         const response = await fetch(API_URL);
