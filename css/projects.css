@@ -15,7 +15,6 @@
 .project__card:hover {
     border-color: var(--first-color);
     transform: translateY(-10px); /* Efecto de elevación elegante */
-    box-shadow: 0 8px 24px rgba(0,255,170, 0.15); /* Sombra verde sutil */
 }
 
 /* El cuadro gris donde irá la imagen */
@@ -72,4 +71,43 @@
 
 .project__button:hover {
     gap: 0.5rem; /* Pequeña animación de flecha */
+}
+
+.interactive-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: .5rem .5rem 0 0;
+}
+
+.interactive-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .22) 100%);
+  opacity: .65;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+
+.project__card {
+  transition: transform .28s ease, box-shadow .28s ease;
+  will-change: transform;
+}
+
+.project__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
+}
+
+.project__img {
+  transition: transform .55s ease, filter .35s ease;
+}
+
+.project__card:hover .project__img {
+  transform: scale(1.06);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+.project__card:hover .interactive-media::after {
+  opacity: .25;
 }

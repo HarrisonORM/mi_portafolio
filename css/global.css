@@ -7,6 +7,9 @@
 
 html {
     scroll-behavior: smooth; /* Desplazamiento suave al dar clic en links */
+    /* Nueva regla: Reducimos la escala base (por defecto es 100% = 16px) */
+    /* 93.75% equivale a ~15px. Si lo quieres más pequeño, prueba con 87.5% (~14px) */
+    font-size: 93.75%; 
 }
 
 body {
@@ -37,14 +40,16 @@ img {
 
 /* Clases Utilitarias (Reutilizables) */
 .container {
-    max-width: 968px;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    /* Ajuste para equilibrar el contenedor con las fuentes más pequeñas */
+    max-width: 1100px; 
+    width: 92%; /* Asegura un margen fluido en móviles y tablets */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem; /* Aumentamos un poco el espacio entre elementos para que respiren mejor al ser más anchos */
 }
 
 .section {
@@ -70,10 +75,587 @@ img {
     color: var(--first-color);
 }
 
-/* Ajuste para pantallas grandes */
+/* Ajuste para pantallas grandes (puedes eliminar o reemplazar el bloque que tenías) */
 @media screen and (min-width: 968px) {
+    .container {
+        /* En pantallas grandes, usamos casi todo el ancho pero mantenemos el max-width */
+        width: 95%; 
+    }
+}
+
+/* Reveal on scroll */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+    will-change: opacity, transform;
+}
+
+[data-reveal="left"] { transform: translateX(-24px); }
+[data-reveal="right"] { transform: translateX(24px); }
+[data-reveal="up"] { transform: translateY(18px); }
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ========== MODO CLARO (Light Theme) ========== */
+/* Por defecto no se aplica. El body usará tus variables oscuras originales. */
+body.light-theme {
+    --body-color: #f0f2f5;       /* Gris muy suave */
+    --container-color: #ffffff;  /* Tarjetas blancas puras */
+    --title-color: #111111;      /* Textos muy oscuros */
+    --text-color: #333333;       
+    --text-color-light: #555555; 
+    --first-color: #027A48;      /* Verde esmeralda profundo */
+}
+
+body.light-theme .project__card,
+body.light-theme .contact__card,
+body.light-theme .api__card {
+    background-color: var(--container-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .button--ghost {
+    color: var(--first-color);
+    border-color: var(--first-color);
+}
+
+/* ========== BOTÓN FLOTANTE ========== */
+.theme__toggle-fixed {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--first-color);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.theme__toggle-fixed:hover {
+    transform: translateY(-5px);
+    background-color: var(--title-color);
+}
+
+/* ========== MENÚ LATERAL TIPO LISTA (DESKTOP) ========== */
+@media screen and (min-width: 968px) {
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100vh;
+        background-color: var(--body-color);
+        border-right: 1px solid rgba(128,128,128,0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 3rem;
+        z-index: 100;
+        transition: background-color .5s;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .nav__link i {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .nav__text {
+        font-size: 0.75rem;
+    }
+
+    .nav__link.active-link,
+    .nav__link:hover {
+        color: var(--first-color);
+    }
+
+    /* Empuja el contenido para que el menú lateral no lo tape */
+    .main, .footer {
+        margin-left: 100px;
+    }
+}
+
+/* ========== REGLAS MAESTRAS DE LA BARRA LATERAL (Corrección Definitiva) ========== */
+@media screen and (min-width: 968px) {
+    /* 1. EL CONTENEDOR PRINCIPAL (La franja vertical) */
+    .header {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 88px !important;    /* Ancho fijo delgado */
+        height: 100vh !important;  /* Altura completa de la pantalla */
+        background-color: var(--body-color);
+        border-right: 1px solid rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding: 4rem 0 0 0 !important; /* Espacio arriba */
+        
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Elementos desde arriba */
+        
+        /* Elimina cualquier efecto borroso o sombra del menú móvil */
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Borde en modo oscuro */
+    body.dark-theme .header {
+        border-right: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* 2. OCULTAR ELEMENTOS QUE NO QUEREMOS EN LA BARRA */
+    .nav__logo, 
+    .nav__toggle, 
+    .nav__close { 
+        display: none !important; 
+    }
+
+    /* 3. RESETEO TOTAL DEL MENÚ (Para que no ocupe toda la pantalla) */
+    .nav__menu {
+        position: static !important; /* Ya no flota sobre la pantalla */
+        width: 100% !important;
+        height: auto !important;
+        background-color: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: none !important;
+        inset: unset !important; /* Resetea el top/left/right/bottom */
+        transform: none !important;
+    }
+
+    .nav {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin: 0 !important;
+        column-gap: 0;
+    }
+
+    /* 4. LA LISTA DE ÍCONOS */
+    .nav__list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        row-gap: 3rem; /* Espacio vertical entre iconos */
+    }
+
+    .nav__item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* 5. ESTILO DE LOS ENLACES (ICONOS) */
+    .nav__link {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.8rem;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: .3s;
+        opacity: 0.6;
+    }
+
+    .nav__link i {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .nav__text {
+        font-size: 0.6rem; /* Texto chiquito debajo del icono */
+        display: block !important; /* Asegura que se vea */
+    }
+
+    .nav__link:hover, 
+    .nav__link.active-link {
+        color: var(--first-color);
+        opacity: 1;
+    }
+
+    /* 6. EMPUJAR EL CONTENIDO DE LA PÁGINA A LA DERECHA */
+    /* Esto es vital para que la barra no tape tu información */
+    .main {
+        margin-left: 88px !important;
+        padding-top: 2rem;
+    }
+
+    .footer {
+        margin-left: 88px !important;
+    }
+
     .container {
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+/* ========== NUEVO DISEÑO: DOCK DE NAVEGACIÓN FLOTANTE (ESTILO "ISLA") ========== */
+/* Aplica para pantallas grandes (Desktop) */
+@media screen and (min-width: 968px) {
+    
+    /* 1. RESETEO DE ESTRUCTURA (Recuperar espacio completo) */
+    body {
+        margin: 0;
+    }
+
+    .main {
+        margin-left: 0 !important; /* Quitamos el margen izquierdo */
+        padding-top: 0 !important; /* Contenido pegado arriba */
+    }
+
+    /* Ajuste para que la primera sección (About) suba más */
+    .about.section {
+        padding-top: 2rem; /* Reduce el espacio sobre la foto/título */
+        min-height: 90vh; /* Que ocupe casi toda la pantalla al inicio */
+        display: flex;
+        align-items: center;
+        padding-left: 6rem !important; 
+    }
+    
+    .section {
+        padding-left: 6rem !important;
+        padding-right: 2rem !important;
+    }
+
+    /* 2. BARRA FLOTANTE (DOCK) */
+    .header {
+        position: fixed !important;
+        /* Centrado verticalmente */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        left: 50% !important;
+        transform: translateX(-50%); /* Centrado perfecto */
+        
+        width: auto !important;
+        height: auto !important;
+        padding: 0.8rem 2.5rem !important;
+        
+        background-color: var(--container-color); /* Fondo del tema actual */
+        border-radius: 4rem; /* Forma de píldora/isla */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Sombra de elevación */
+        
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        
+        /* Efecto vidrio esmerilado (Glassmorphism) */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Ajustes específicos para el modo claro */
+    body.light-theme .header {
+        background-color: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    body.dark-theme .header {
+        background-color: rgba(30, 30, 30, 0.85); /* Semitransparente oscuro */
+    }
+
+    /* 3. CONTENIDO DEL MENÚ */
+    .nav {
+        height: auto !important;
+        width: auto !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Ocultamos logo y toggle en el dock, solo queremos botones */
+    .nav__logo, 
+    .nav__toggle, 
+    .nav__close { 
+        display: none !important; 
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: row !important; /* Horizontal */
+        gap: 3.5rem; /* Separación amplia entre botones */
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 4px;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Rebote suave */
+        opacity: 0.7;
+    }
+
+    .nav__link i {
+        font-size: 1.5rem;
+    }
+
+    .nav__text {
+        font-size: 0.75rem;
+        display: block !important; /* Asegura que se vea */
+    }
+
+    /* Efectos Hover Interactivos */
+    .nav__link:hover {
+        color: var(--first-color);
+        opacity: 1;
+        transform: translateY(-5px) scale(1.1); /* El icono 'salta' al pasar el mouse */
+    }
+
+    .nav__link.active-link {
+        color: var(--first-color);
+        opacity: 1;
+    }
+    
+    /* Indicador visual activo (punto debajo) */
+    .nav__link.active-link::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        width: 4px;
+        height: 4px;
+        background-color: var(--first-color);
+        border-radius: 50%;
+    }
+}
+
+/* ========== DOCK VERTICAL FLOTANTE (IZQUIERDA) ========== */
+@media screen and (min-width: 968px) {
+    
+    /* 1. RESETEO DE ESTRUCTURA */
+    body {
+        margin: 0;
+    }
+
+    .main {
+        margin-left: 0 !important; 
+        padding-top: 0 !important;
+    }
+
+    .footer {
+        margin-left: 0 !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    /* Respiro a la izquierda para que el contenido no choque con el dock */
+    .about.section {
+        padding-top: 2rem;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding-left: 5rem !important; /* Reducido de 6rem a 5rem */
+    }
+    
+    .section {
+        padding-left: 5rem !important; /* Reducido de 6rem a 5rem */
+        padding-right: 2rem !important;
+    }
+
+    /* 2. DOCK VERTICAL FLOTANTE (MÁS DELGADO) */
+    .header {
+        position: fixed !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        left: 1.5rem !important; /* Más cerca del borde */
+        bottom: auto !important;
+        right: auto !important;
+        
+        width: auto !important; 
+        height: auto !important;
+        padding: 1.8rem 0.6rem !important; /* Menos padding = más delgado */
+        
+        background-color: var(--container-color);
+        border-radius: 3rem; /* Menos redondeado para verse más delgado */
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+        
+        display: flex !important;
+        flex-direction: column !important; 
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        
+        /* Glassmorphism más sutil */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* Ajustes de color por tema */
+    body.light-theme .header {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    }
+    
+    body.dark-theme .header {
+        background-color: rgba(30, 30, 30, 0.9);
+    }
+
+    /* 3. LIMPIEZA DEL NAV */
+    .nav {
+        height: auto !important;
+        width: auto !important;
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    /* Ocultar elementos no deseados */
+    .nav__logo, 
+    .nav__toggle, 
+    .nav__close { 
+        display: none !important; 
+    }
+
+    /* Resetar menú móvil */
+    .nav__menu {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background-color: transparent !important;
+        backdrop-filter: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex !important;
+        box-shadow: none !important;
+        inset: unset !important;
+        transform: none !important;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column !important; 
+        gap: 2.2rem; /* Menos espacio entre íconos = más compacto */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 4. ESTILO DE LOS ENLACES (MÁS DELGADOS) */
+    .nav__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2px; /* Menos espacio entre ícono y texto */
+        color: var(--text-color);
+        font-weight: 500;
+        transition: transform 0.25s ease, color 0.25s ease;
+        opacity: 0.5; /* Menos opacidad por defecto */
+        position: relative;
+    }
+
+    .nav__link i {
+        font-size: 1.4rem; /* Íconos más pequeños */
+    }
+
+    /* Texto oculto para diseño limpio */
+    .nav__text {
+        display: none !important; 
+    }
+    
+    /* Tooltip mejorado (aparece a la derecha del ícono) */
+    .nav__link::before {
+        content: attr(title);
+        position: absolute;
+        left: 100%;
+        margin-left: 1rem;
+        background: var(--title-color);
+        color: var(--body-color);
+        padding: 0.3rem 0.6rem;
+        border-radius: 0.3rem;
+        font-size: 0.75rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+        transform: translateX(-8px);
+        white-space: nowrap;
+        z-index: 1001;
+    }
+
+    .nav__link:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Efectos Hover */
+    .nav__link:hover {
+        color: var(--first-color);
+        opacity: 1;
+        transform: scale(1.1); /* Menos zoom */
+    }
+
+    /* ESTILO ACTIVO CORREGIDO */
+    .nav__link.active-link {
+        color: var(--first-color) !important; /* Fuerza el color verde */
+        opacity: 1 !important;
+    }
+    
+    /* Indicador visual activo (punto a la izquierda del ícono) */
+    .nav__link.active-link::after {
+        content: '';
+        position: absolute;
+        left: -10px; /* Más cerca del ícono */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 3px;
+        background-color: var(--first-color);
+        border-radius: 50%;
     }
 }

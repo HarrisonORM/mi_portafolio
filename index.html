@@ -7,42 +7,61 @@
     <title>Portafolio | Desarrollador Web</title>
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/projects.css">
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/experience.css?v=20261006-3">
+    <meta name="description" content="Portafolio de Harrison Rengifo Marin, desarrollador web.">
 </head>
 
-<body>
+<body class="portfolio">
 
+    <!-- Dock de navegación (desktop) / menú móvil -->
     <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo"><span class="text-accent">Harrison Rengifo Marin</span></a>
-
+        <nav class="nav container" aria-label="Navegación principal">
+            <a href="#about" class="nav__logo" aria-label="Harrison Rengifo Marin, inicio">HRM</a>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#about" class="nav__link active-link"> Acerca de mí</a></li>
-                    <li class="nav__item"><a href="#projects" class="nav__link"> Mis Proyectos</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link"> Contáctame</a></li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link" title="Acerca de mí">
+                            <i class='bx bx-user'></i>
+                            <span class="nav__text">Acerca de</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#projects" class="nav__link" title="Mis Proyectos">
+                            <i class='bx bx-briefcase-alt-2'></i>
+                            <span class="nav__text">Proyectos</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link" title="Contáctame">
+                            <i class='bx bx-message-square-detail'></i>
+                            <span class="nav__text">Contacto</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
+            <button class="theme__toggle-fixed" id="theme-button" aria-label="Cambiar tema" type="button">
+                <i class='bx bx-sun' aria-hidden="true"></i>
+            </button>
+
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" type="button">
                 <i class='bx bx-grid-alt'></i>
-            </div>
+            </button>
         </nav>
     </header>
 
     <main class="main">
-
         <section class="about section" id="about">
             <div class="about__container container grid">
-                <div class="about__data">
-                    <h1 class="about__title">Hola, soy <span class="text-accent">Harrison Rengifo Marin</span></h1>
-                    <h3 class="about__profession">Desarrollador Web </h3>
+                <div class="about__data" data-reveal="up">
+                    <h1 class="about__title"><span class="about__name text-accent">Harrison Rengifo Marin</span></h1>
+                    <h2 class="about__profession">Desarrollador Web</h2>
 
                     <p class="about__description">
                         Egresado del CESDE con bases sólidas en lógica de programación.
@@ -59,14 +78,14 @@
 
                     </div>
 
-                    <div id="github-api-data" class="api__card">
+                    <div id="github-api-data" class="api__card" data-reveal="up">
                         <i class='bx bx-loader-alt bx-spin'></i> Cargando datos de GitHub...
                     </div>
                 </div>
 
-                <div class="about__img-wrapper">
-                    <div class="about__img-placeholder">
-                        <img src="assets/img/perfil.jpg" alt="Foto de perfil" onerror="this.style.display='none';">
+                <div class="about__img-wrapper" data-reveal="left">
+                    <div class="about__img-placeholder interactive-media">
+                        <img src="https://avatars.githubusercontent.com/u/258345014?v=4" alt="Retrato de Harrison Rengifo Marin" loading="eager" fetchpriority="high" decoding="async" onerror="this.style.display='none';">
                         <i class='bx bx-user'></i>
                     </div>
                 </div>
@@ -78,11 +97,11 @@
             <span class="section__subtitle">Portafolio reciente</span>
 
             <div class="projects__container container grid">
-
-                <article class="project__card">
-                    <div class="project__image-box" style="padding: 0;">
+                <article class="project__card" data-reveal="up">
+                    <div class="project__image-box interactive-media" style="padding: 0;">
                         <img src="img/Collage de imagenes del proyecto Sistema de Gestión & Roles.png"
                             alt="Vista previa del Sistema de Gestión" class="project__img"
+                            loading="lazy" decoding="async"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem .5rem 0 0;">
                     </div>
                     <div class="project__content">
@@ -91,30 +110,36 @@
                                 (Flask)</strong> y <strong>PostgreSQL</strong>.
                             Cuenta con autenticación segura, encriptación de contraseñas y un sistema de
                             Control de Acceso Basado en Roles (RBAC) para perfiles de Admin, Conductor y Bodega.</p>
+                        <ul class="project__stack" aria-label="Tecnologías utilizadas">
+                            <li>Python</li><li>Flask</li><li>PostgreSQL</li>
+                        </ul>
                         <a href="https://github.com/HarrisonORM/Validaci-n-de-datos.git"
-                            class="project__button">Repositorio <i class='bx bx-link-external'></i></a>
+                            class="project__button" target="_blank" rel="noopener noreferrer">Repositorio <i class='bx bx-link-external'></i></a>
                     </div>
                 </article>
 
-                <article class="project__card">
-                    <div class="project__image-box" style="padding: 0;">
+                <article class="project__card" data-reveal="up">
+                    <div class="project__image-box interactive-media" style="padding: 0;">
                         <img src="img/Imagen de clima colombia.png" alt="Vista previa Clima Colombia"
-                            class="project__img"
+                            class="project__img" loading="lazy" decoding="async"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem .5rem 0 0;">
                     </div>
                     <div class="project__content">
                         <h3 class="project__title">Clima Colombia</h3>
-                        <p class="project__description">Aplicacion para consultar el clima en diferentes ciudades de
-                            Colombia, tambien podras ver su temperatura, humedad y sensacion termica. Desarrollado con
+                        <p class="project__description">Aplicación para consultar el clima en distintas ciudades de
+                            Colombia. Muestra temperatura, humedad y sensación térmica. Desarrollada con
                             <strong>JavaScript</strong>, <strong>HTML</strong>, <strong>CSS</strong>,
                             <strong>React</strong> y <strong>Axios</strong>.
                         </p>
-                        <a href="https://harrisonorm.github.io/clima-colombia/" class="project__button">Demo <i
+                        <ul class="project__stack" aria-label="Tecnologías utilizadas">
+                            <li>JavaScript</li><li>HTML</li><li>CSS</li><li>React</li><li>Axios</li>
+                        </ul>
+                        <a href="https://harrisonorm.github.io/clima-colombia/" class="project__button" target="_blank" rel="noopener noreferrer">Demo <i
                                 class='bx bx-link-external'></i></a>
                     </div>
                 </article>
 
-                <article class="project__card">
+                <article class="project__card project__card--upcoming" data-reveal="up">
                     <div class="project__image-box">
                         <span class="project__status">En Desarrollo</span>
                         <i class='bx bx-code-block project__icon'></i>
@@ -158,23 +183,23 @@
             <span class="section__subtitle">Ponte en contacto</span>
 
             <div class="contact__container container grid">
-                <div class="contact__card">
+                <div class="contact__card" data-reveal="up">
                     <div class="contact__card-icon"><i class='bx bxl-whatsapp'></i></div>
                     <h3 class="contact__card-title">WhatsApp</h3>
                     <span class="contact__card-data">Chat directo</span>
-                    <a href="https://wa.me/573135346325" target="_blank" class="contact__button">Escribirme <i
+                    <a href="https://wa.me/573135346325" target="_blank" rel="noopener noreferrer" class="contact__button">Escribirme <i
                             class='bx bx-right-arrow-alt'></i></a>
                 </div>
 
-                <div class="contact__card">
+                <div class="contact__card" data-reveal="up">
                     <div class="contact__card-icon"><i class='bx bxl-telegram'></i></div>
                     <h3 class="contact__card-title">Telegram</h3>
                     <span class="contact__card-data">@harryson02</span>
-                    <a href="https://t.me/harryson02" target="_blank" class="contact__button">Escribirme <i
+                    <a href="https://t.me/harryson02" target="_blank" rel="noopener noreferrer" class="contact__button">Escribirme <i
                             class='bx bx-right-arrow-alt'></i></a>
                 </div>
 
-                <div class="contact__card">
+                <div class="contact__card" data-reveal="up">
                     <div class="contact__card-icon"><i class='bx bxl-microsoft'></i></div>
                     <h3 class="contact__card-title">Outlook</h3>
                     <span class="contact__card-data">Harryson02@outlook.com</span>
@@ -187,7 +212,7 @@
 
     <footer class="footer">
         <div class="footer__container container">
-            <h1 class="footer__title">Harrison Olvany Rengifo Marin</h1>
+            <h2 class="footer__title">Harrison Rengifo Marin</h2>
             <ul class="footer__list">
                 <li><a href="#about" class="footer__link">Acerca de</a></li>
                 <li><a href="#projects" class="footer__link">Proyectos</a></li>
@@ -197,7 +222,7 @@
     </footer>
 
     <script src="js/api.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=20261005"></script>
 </body>
 
 </html>

@@ -2,12 +2,10 @@
     row-gap: 2.5rem;
 }
 .about__profession{
-    text-align: justify;
     padding: 0 0.4rem;
 }
 
 .about__description {
-    text-align: justify;
    padding: 0 0.4rem;
 }
 
@@ -80,7 +78,6 @@
     padding: 1rem;
     border-radius: .75rem;
     text-align: center;
-    border-left: 4px solid var(--first-color);
     font-size: var(--small-font-size);
     margin-top: 1.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);

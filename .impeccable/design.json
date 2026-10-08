@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T00:00:00.000Z",
+  "title": "Design System: Harrison Rengifo Marin Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "forest-accent-dark": {
+        "role": "primary",
+        "displayName": "Verde menta de acción",
+        "canonical": "hsl(150, 69%, 61%)",
+        "tonalRamp": [
+          "oklch(20% 0.08 155)",
+          "oklch(30% 0.08 155)",
+          "oklch(40% 0.08 155)",
+          "oklch(50% 0.08 155)",
+          "oklch(60% 0.08 155)",
+          "oklch(70% 0.08 155)",
+          "oklch(80% 0.08 155)",
+          "oklch(90% 0.08 155)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Sora",
+        "purpose": "Nombre y encabezados principales."
+      },
+      "body": {
+        "displayName": "Onest",
+        "purpose": "Biografía, descripciones y controles."
+      },
+      "label": {
+        "displayName": "DM Mono",
+        "purpose": "Metadatos y etiquetas de tecnología."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "200ms ease",
+        "purpose": "Cambios de color y respuesta de botones."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "650ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Entrada de secciones y filas al aparecer en viewport."
+      },
+      {
+        "name": "image-hover",
+        "value": "500ms cubic-bezier(.2, .7, .2, 1)",
+        "purpose": "Escala sutil de capturas de proyectos."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "content-stack",
+        "value": "760px"
+      },
+      {
+        "name": "compact-gutters",
+        "value": "380px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal rellena; el hover usa el verde alternativo y una elevación breve.",
+      "html": "<a class=\"ds-button-primary\" href=\"#contact\">Contáctame</a>",
+      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .7rem 1.1rem; border: 1px solid hsl(150, 69%, 61%); border-radius: 4px; background: hsl(150, 69%, 61%); color: hsl(150, 28%, 12%); font: 700 .9rem/1.2 Onest, sans-serif; text-decoration: none; transition: background-color .2s ease, color .2s ease, transform .2s ease; } .ds-button-primary:hover { transform: translateY(-2px); background: hsl(150, 57%, 53%); } .ds-button-primary:focus-visible { outline: 2px solid hsl(150, 69%, 61%); outline-offset: 4px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria transparente con borde de acento.",
+      "html": "<a class=\"ds-button-ghost\" href=\"#projects\">Ver portafolio</a>",
+      "css": ".ds-button-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .7rem 1.1rem; border: 1px solid hsl(150, 69%, 61%); border-radius: 4px; background: transparent; color: hsl(150, 69%, 61%); font: 700 .9rem/1.2 Onest, sans-serif; text-decoration: none; transition: background-color .2s ease, color .2s ease, transform .2s ease; } .ds-button-ghost:hover { transform: translateY(-2px); background: hsl(150, 29%, 16%); color: hsl(150, 8%, 95%); } .ds-button-ghost:focus-visible { outline: 2px solid hsl(150, 69%, 61%); outline-offset: 4px; }"
+    },
+    {
+      "name": "Horizontal Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Barra sticky con enlaces sobrios y regla inferior para hover o sección activa.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegación principal\"><a href=\"#about\">Acerca de</a><a class=\"ds-nav-active\" href=\"#projects\">Proyectos</a><a href=\"#contact\">Contacto</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid rgba(196, 226, 207, .16); background: hsl(150, 28%, 12%); } .ds-nav a { position: relative; padding: .6rem 0; color: hsl(150, 8%, 68%); font: 600 .88rem/1.4 Onest, sans-serif; text-decoration: none; } .ds-nav a::after { position: absolute; right: 0; bottom: .2rem; left: 0; height: 1px; background: hsl(150, 69%, 61%); content: ''; transform: scaleX(0); transform-origin: left; transition: transform .24s ease; } .ds-nav a:hover, .ds-nav a.ds-nav-active { color: hsl(150, 8%, 95%); } .ds-nav a:hover::after, .ds-nav a.ds-nav-active::after { transform: scaleX(1); } .ds-nav a:focus-visible { outline: 2px solid hsl(150, 69%, 61%); outline-offset: 4px; }"
+    },
+    {
+      "name": "Project Row",
+      "kind": "custom",
+      "refersTo": "project-row",
+      "description": "Fila abierta de proyecto con captura de esquinas suaves, texto y divisor, sin contenedor-card.",
+      "html": "<article class=\"ds-project\"><div class=\"ds-project-media\"><img src=\"project-preview.png\" alt=\"Vista previa del proyecto\"></div><div><h3>Sistema de Gestión &amp; Roles</h3><p>Descripción breve del proyecto.</p><ul><li>Python</li><li>Flask</li><li>PostgreSQL</li></ul><a href=\"#project\">Repositorio</a></div></article>",
+      "css": ".ds-project { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(196, 226, 207, .16); color: hsl(150, 8%, 78%); font: 400 1rem/1.65 Onest, sans-serif; } .ds-project-media { overflow: hidden; border: 1px solid rgba(196, 226, 207, .16); border-radius: 12px; aspect-ratio: 16 / 10; } .ds-project img { display: block; width: 100%; height: 100%; border-radius: 12px; object-fit: cover; transition: transform .5s cubic-bezier(.2, .7, .2, 1), filter .4s ease; } .ds-project-media:hover img { transform: scale(1.025); filter: saturate(1); } .ds-project h3 { margin: 0 0 .8rem; color: hsl(150, 8%, 95%); font: 600 1.6rem/1.25 Sora, sans-serif; } .ds-project p { margin: 0 0 1rem; color: hsl(150, 8%, 68%); } .ds-project ul { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1.2rem; padding: 0; list-style: none; } .ds-project li { padding: .24rem .58rem; border: 1px solid rgba(83, 226, 149, .34); border-radius: 6px; background: rgba(53, 205, 123, .14); color: #a8edc2; font: 400 .72rem/1.5 'DM Mono', monospace; } .ds-light .ds-project li { border-color: #a3d7b6; background: #def3e7; color: #0f5b38; } .ds-project a { color: hsl(150, 69%, 61%); font-weight: 700; text-underline-offset: .22em; } .ds-project a:focus-visible { outline: 2px solid hsl(150, 69%, 61%); outline-offset: 4px; } @media (max-width: 760px) { .ds-project { grid-template-columns: minmax(0, 1fr); } }"
+    },
+    {
+      "name": "Technology Label",
+      "kind": "chip",
+      "refersTo": "project-stack-chip",
+      "description": "Etiqueta técnica compacta con relleno esmeralda, adaptable al tema oscuro o claro.",
+      "html": "<span class=\"ds-stack-label\">PostgreSQL</span>",
+      "css": ".ds-stack-label { display: inline-block; padding: .24rem .58rem; border: 1px solid rgba(83, 226, 149, .34); border-radius: 6px; background: rgba(53, 205, 123, .14); color: #a8edc2; font: 400 .72rem/1.5 'DM Mono', monospace; } .ds-light .ds-stack-label { border-color: #a3d7b6; background: #def3e7; color: #0f5b38; }"
+    },
+    {
+      "name": "Contact Row",
+      "kind": "custom",
+      "refersTo": "contact-row",
+      "description": "Método de contacto dividido por una regla superior y una acción textual.",
+      "html": "<div class=\"ds-contact\"><span class=\"ds-contact-icon\" aria-hidden=\"true\">@</span><div><h3>Correo</h3><p>correo@example.com</p></div><a href=\"mailto:correo@example.com\">Enviar correo <span aria-hidden=\"true\">→</span></a></div>",
+      "css": ".ds-contact { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: .8rem; padding-top: 1rem; border-top: 1px solid rgba(196, 226, 207, .16); color: hsl(150, 8%, 78%); font-family: Onest, sans-serif; } .ds-contact-icon { color: hsl(150, 69%, 61%); font-size: 1.65rem; } .ds-contact h3 { margin: 0 0 .35rem; color: hsl(150, 8%, 95%); font: 600 1.1rem/1.35 Sora, sans-serif; } .ds-contact p { margin: 0; color: hsl(150, 8%, 68%); font-size: .9rem; overflow-wrap: anywhere; } .ds-contact a { color: hsl(150, 69%, 61%); font-size: .9rem; font-weight: 700; text-decoration: none; } .ds-contact a:hover { text-decoration: underline; } .ds-contact a:focus-visible { outline: 2px solid hsl(150, 69%, 61%); outline-offset: 4px; } @media (max-width: 380px) { .ds-contact { grid-template-columns: 32px minmax(0, 1fr); } .ds-contact a { grid-column: 2; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Cuaderno de Campo Web",
+    "overview": "El sistema presenta el trabajo como una secuencia de notas de ingeniería: una retícula verde de dos escalas establece el papel y aporta profundidad, una línea vertical y reglas finas ordenan el recorrido, y los títulos marcan cada sección. El verde identifica acciones y detalles de navegación; el contenido y las imágenes de los proyectos conservan el protagonismo. La misma estructura cambia entre superficies verde-negras y claras, sin cambiar su gramática.\n\nLa composición es editorial y abierta, no una colección de paneles: encabezado horizontal, introducción amplia, muestras de proyectos con imagen y texto, y rutas de contacto separadas por reglas. Sora aporta contraste geométrico a títulos; Onest mantiene cómoda la lectura; DM Mono queda reservada a metadatos y stacks de tecnologías. El tema oscuro es el inicial y la elección se conserva entre visitas. La retícula y los separadores son los recursos de profundidad; no hay resplandor ni gradientes decorativos en la superficie activa.",
+    "keyCharacteristics": [
+      "Verde como acento persistente en tema oscuro y claro.",
+      "Superficies planas, retícula verde de dos escalas y divisores de un píxel.",
+      "Tipografía geométrica para títulos, sans local para lectura y mono para metadatos.",
+      "Movimiento breve ligado a hover y entrada en viewport, con respeto a movimiento reducido."
+    ],
+    "rules": [
+      {
+        "name": "The Green Across Themes Rule",
+        "body": "El verde sigue señalando acción en ambos temas; cambia su valor para conservar legibilidad, no su función.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three-Voice Rule",
+        "body": "Reserva Sora para jerarquía, Onest para lectura y DM Mono para metadatos breves; no conviertas el texto corrido en una interfaz monoespaciada.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rule-Not-Card Rule",
+        "body": "La estructura se marca con líneas y espacio; no encierres cada proyecto o método de contacto en una tarjeta redondeada.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "No añadas sombras a reposo para simular jerarquía; usa superficie, regla y espaciado. Reserva el movimiento visible para respuestas de interacción.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do conservar los dos temas y asignar el verde a acciones y énfasis en ambos.",
+      "Do usar divisores finos, retícula de baja intensidad y jerarquía tipográfica para organizar secciones.",
+      "Do mantener los tres roles tipográficos en sus funciones observadas.",
+      "Do permitir que imágenes, títulos y acciones fluyan a una columna hasta 760px y verificar el ajuste a 320px.",
+      "Do conservar foco visible y movimiento reducido en nuevos controles interactivos."
+    ],
+    "donts": [
+      "Don't convertir las filas de proyecto y contacto en paneles con sombra y radios grandes.",
+      "Don't usar DM Mono para párrafos ni inventar etiquetas técnicas para rellenar espacios.",
+      "Don't aplicar glow, gradientes saturados o adornos tipo dashboard: no forman parte de la superficie activa.",
+      "Don't eliminar la persistencia del tema o cambiar el papel semántico del verde entre temas."
+    ]
+  }
+}
