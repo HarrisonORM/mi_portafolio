@@ -152,7 +152,7 @@ La paleta conserva un acento verde vivo en oscuro y lo cambia por un verde bosqu
 
 El contenido se centra en un ancho máximo de `1160px`, con gutters de `48px` y margen automático; a `380px` o menos, el gutter baja a `32px`. La navegación permanece horizontal y sticky en todos los tamaños: mide `74px` en escritorio y `66px` hasta `760px`. Una regla vertical tenue acompaña el eje del contenido; las secciones usan padding fluido (`clamp(5rem, 9vw, 8rem)`).
 
-Por encima de `760px`, la introducción usa dos columnas con proporción aproximada `1.28fr / .72fr`; el retrato conserva formato `4:5`. Los proyectos se presentan como filas `16:10` con imagen y texto, alternando el segundo proyecto. Hasta `760px`, la introducción y cada proyecto pasan a una columna, y el retrato queda centrado bajo el texto. Contacto pasa de tres columnas a filas compactas de icono, datos y acción; bajo `380px`, la acción baja debajo de los datos para evitar desbordamiento. El documento admite un viewport mínimo de `320px` y recorta overflow horizontal.
+Por encima de `760px`, la introducción usa dos columnas con proporción aproximada `1.28fr / .72fr`; el retrato conserva formato `4:5`. Las filas de proyecto alternan imagen y texto en escritorio. Los collages cuadrados conservan su proporción `1:1`; el contenido se centra y se muestra completo. Hasta `760px`, la introducción y cada proyecto pasan a una columna, y el retrato queda centrado bajo el texto. Contacto pasa de tres columnas a filas compactas de icono, datos y acción; bajo `380px`, la acción baja debajo de los datos para evitar desbordamiento. El documento admite un viewport mínimo de `320px` y recorta overflow horizontal.
 
 **The Rule-Not-Card Rule.** La estructura se marca con líneas y espacio; no encierres cada proyecto o método de contacto en una tarjeta redondeada.
 
@@ -165,7 +165,7 @@ La superficie activa es plana en reposo. La profundidad viene de la retícula de
 
 ## Shapes
 
-La geometría combina controles precisos con medios más amables: etiquetas tecnológicas usan `6px`, capturas e imágenes de proyecto `12px`, el retrato `14px`, su marco interior `8px` y los botones mantienen `4px`. Las imágenes recortan con `object-fit: cover`; el retrato mantiene `4:5` y los proyectos `16:10`. Evita píldoras exageradas, círculos decorativos y contenedores con radios amplios. Los divisores son líneas de `1px`, no bordes que enmarquen cada bloque.
+La geometría combina controles precisos con medios más amables: etiquetas tecnológicas usan `6px`, capturas e imágenes de proyecto `12px`, el retrato `14px`, su marco interior `8px` y los botones mantienen `4px`. Los collages usan `object-fit: contain` y centrado para conservar la imagen completa; el retrato mantiene `4:5` y los collages cuadrados `1:1`. Evita píldoras exageradas, círculos decorativos y contenedores con radios amplios. Los divisores son líneas de `1px`, no bordes que enmarquen cada bloque.
 
 ## Components
 
@@ -184,7 +184,7 @@ La geometría combina controles precisos con medios más amables: etiquetas tecn
 La barra horizontal permanece arriba, con logotipo textual a la izquierda, enlaces centrados y control cuadrado de tema a la derecha. Enlaces inactivos usan texto secundario; hover y sección activa aumentan contraste y revelan una línea inferior animada. El control de tema mide `42px` (`38px` hasta `760px`) y alterna entre las paletas guardando la selección. En pantallas estrechas la navegación sigue horizontal y reduce gaps y tamaño tipográfico; no cambia a dock inferior ni a menú desplegable en la superficie activa.
 
 ### Project Rows
-Cada fila combina captura recortada con radios de `12px` y texto; la segunda invierte el orden en escritorio. Los stacks son etiquetas DM Mono con relleno, borde y texto esmeralda, adaptados a cada tema. En hover, el proyecto se desplaza hacia arriba y la imagen aumenta levemente; el puntero puede añadir tilt de hasta aproximadamente `2deg` por eje. La tercera fila es un marcador de proyecto en desarrollo, con imagen esquemática y etiqueta mono, no una tarjeta de caso terminado.
+Cada fila combina un collage completo, centrado y con radios de `12px`, con su texto; la segunda invierte el orden en escritorio. Los stacks son etiquetas DM Mono con relleno, borde y texto esmeralda, adaptados a cada tema. En hover, la fila puede inclinarse sutilmente y la imagen aumenta levemente su saturación sin hacer zoom ni recortarse. La tercera fila es un marcador de proyecto en desarrollo, con imagen esquemática y etiqueta mono, no una tarjeta de caso terminado.
 
 ### Contact Rows
 En escritorio, tres métodos se disponen como columnas alineadas a la izquierda. En móvil cada método se convierte en una fila con icono, nombre y dato, y la acción al costado; bajo `380px`, la acción ocupa una línea propia.
