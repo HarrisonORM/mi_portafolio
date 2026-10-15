@@ -584,6 +584,21 @@ body.portfolio .contact__button {
     text-decoration: none;
 }
 
+body.portfolio .project__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem 1.25rem;
+    width: 100%;
+}
+
+@media (max-width: 1100px) {
+    body.portfolio .project__links {
+        justify-content: flex-start;
+    }
+}
+
 body.portfolio .project__button:hover,
 body.portfolio .contact__button:hover {
     gap: .65rem;
@@ -722,6 +737,11 @@ body.portfolio [data-reveal] {
 }
 
 @media (max-width: 760px) {
+    body.portfolio .project__links {
+        justify-content: flex-start;
+        column-gap: 1.25rem;
+    }
+
     body.portfolio .nav.container {
         min-height: 66px;
         gap: .8rem;
